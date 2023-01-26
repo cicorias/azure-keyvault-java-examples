@@ -13,14 +13,14 @@ public class SpringKeyvaultConfiguration {
     public String certificateMaterial() throws Exception {
         KeyStore azureKeyVaultKeyStore = KeyStore.getInstance("AzureKeyVault");
 
-        KeyVaultLoadStoreParameter parameter = new KeyVaultLoadStoreParameter(
-            System.getProperty("azure.keyvault.uri"),
-            System.getProperty("azure.keyvault.tenant-id"),
-            System.getProperty("azure.keyvault.client-id"),
-            System.getProperty("azure.keyvault.client-secret"));
+        // KeyVaultLoadStoreParameter parameter = new KeyVaultLoadStoreParameter(
+        //     System.getProperty("azure.keyvault.uri"),
+        //     System.getProperty("azure.keyvault.tenant-id"),
+        //     System.getProperty("azure.keyvault.client-id"),
+        //     System.getProperty("azure.keyvault.client-secret"));
 
 
-        azureKeyVaultKeyStore.load(parameter);
+        // azureKeyVaultKeyStore.load(parameter);
         return "certificateMaterial";
     }
 }
