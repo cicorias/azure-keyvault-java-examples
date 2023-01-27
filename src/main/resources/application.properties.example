@@ -1,0 +1,19 @@
+# spring.cloud.azure.keyvault.secret.endpoint = ${KEY_VAULT_URI}
+# azure.keyvault.uri=https://scicoria-????.vault.azure.net/
+# azure.cert-path.well-known=${KEY_VAULT_URI}/certificates/well-known?api-version=7.0
+
+# spring.devtools.livereload.enabled=true
+# https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configuration-properties-azure-key-vault-certificates
+# spring.cloud.azure.keyvault.certificate.endpoint=https://scicoria-????.vault.azure.net/
+# spring.cloud.azure.keyvault.secret.endpoint=https://scicoria-????.vault.azure.net/
+spring.cloud.azure.keyvault.secret.property-sources[0].endpoint=https://scicoria-????.vault.azure.net/
+spring.cloud.azure.keyvault.endpoint=https://scicoria-????.vault.azure.net/
+spring.cloud.azure.keyvault.certificate.endpoint=https://scicoria-????.vault.azure.net/
+app.foo=fizbuz
+app.foo2=${CONNECTIONSTRING}
+# spring.cloud.azure.keyvault..secret.property-sources[0].credential.client-id=<your client ID>
+# spring.cloud.azure.keyvault.secret.property-sources[0].credential.client-secret=<your client key>
+# spring.cloud.azure.keyvault.secret.property-sources[0].endpoint=https://contosokv.vault.azure.net/
+# spring.cloud.azure.keyvault.secret.property-sources[0].profile.tenant-id=<your tenant ID>
+
+spring.cloud.azure.keyvault.secret.profile.tenant-id=guid

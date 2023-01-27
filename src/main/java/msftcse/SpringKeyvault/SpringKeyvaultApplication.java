@@ -1,5 +1,7 @@
 package msftcse.SpringKeyvault;
 
+import java.util.Properties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +26,12 @@ public class SpringKeyvaultApplication
 		for (int i = 0; i < args.length; ++i) {
 			LOG.info("args[{}]: {}", i, args[i]);
 		}
+		Properties properties = System.getProperties();
+        properties.forEach((k, v) -> System.out.println(k + ":" + v));
+
+		var environment = System.getenv();
+		environment.forEach((k, v) -> System.out.println(k + ":" + v));
+		
 	}
 
 }

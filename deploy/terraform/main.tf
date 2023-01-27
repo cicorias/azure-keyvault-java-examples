@@ -37,10 +37,15 @@ variable "key_vault_name" {
   default = "example-keyvault"
 }
 
-variable "common_name" {
+variable "device_prefix" {
   type    = string
-  default = "fizbuzz"
+  default = "sim-dev"
 }
+
+# variable "common_name" {
+#   type    = string
+#   default = "fizbuzz"
+# }
   
 resource "random_id" "suffix" {
   keepers = {
@@ -111,7 +116,9 @@ resource "azurerm_key_vault_secret" "example" {
 
 # Generating a auto-renewing self signed certificate
 resource "azurerm_key_vault_certificate" "self_signed_certificate" {
-  name         = "self-signed-certificate"
+  count        = 10
+  name         = "${var.device_prefix}-${format("%06d", count.index + 1)}" # "self-signed-certificate" ${format("%02d", count.index + 1)}
+  
   key_vault_id = azurerm_key_vault.this.id
 
   certificate_policy {
@@ -163,11 +170,11 @@ resource "azurerm_key_vault_certificate" "self_signed_certificate" {
         "keyEncipherment",
       ]
 
-      subject_alternative_names {
-        dns_names = ["internal.contoso.com", "domain.hello.world"]
-      }
+      # subject_alternative_names {
+      #   dns_names = ["internal.contoso.com", "domain.hello.world"]
+      # }
 
-      subject            = "CN=yourorg.com"
+      subject            = "CN=${var.device_prefix}-${format("%06d", count.index + 1)}.yourorg.com"
       validity_in_months = 12
     }
   }
